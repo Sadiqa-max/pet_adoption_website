@@ -2,93 +2,111 @@
 <!--i263080-->
 <!--SE_B-->
 
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Happy Pet Adoption</title>
+
     <link rel="stylesheet" href="style.css">
-    <style>
-
-        table {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            border-collapse: collapse;
-            width: 50%;
-        }
-        td, th {
-            border: 1px saddlebrown #ddd;
-            padding: 8px;
-        }
-
-        tr:nth-child(even){background-color: cadetblue;}
-        tr:hover {background-color: #ddd;}
-
-        th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-        }
-
-
-        body {
-            background-color: beige;
-            text-align: center;
-        }
-
-        h1 {
-            color: brown;
-            font-size: xx-large;
-
-        }
-
-        p {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: xx-large;
-        }
-    </style>
 </head>
+
 <body>
 
-    <h1>Happy Pet Adoption</h1>
-    <p>Categories.</p>
-<center>
-    <table>
-        <tr>
-            <th>Pet Name</th>
-            <th>Type</th>
-            <th>Speciality</th>
-        </tr>
-        <tr>
-            <td>Pinky</td>
-            <td>Rabbit</td>
-            <td>Fast</td>
-        </tr>
-        <tr>
-            <td>Meovv</td>
-            <td>Cat</td>
-            <td>Cute</td>
-        </tr>
-        <tr>
-            <td>Tonny</td>
-            <td>Dog</td>
-            <td>Loyal</td>
-        </tr>
-    </table>
-    </center>
-    <img src="images/cat_picture.jfif" width ="300"/> 
+    <!-- Navigation Bar -->
+    <header>
 
-    <center>
-        <button onclick="pet()">Adopt a Pet today</button>
-    </center>
+        <h1 class="logo">🐾 Happy Pet Adoption</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="pets.html">Available Pets</a>
+            <a href="about.html">About Us</a>
+        </nav>
+
+    </header>
 
 
+    <!-- Welcome Section -->
+    <section class="welcome">
 
-    <script>
-        function pet() {
-            alert("Thank you for choosing Happy Adoption to adopt your first pretty pet");
-        }
-    </script>
+        <h2>Find Your Furry Best Friend!</h2>
+
+        <p>
+            A loving home starts with a little paw print.
+            Adopt a friend. Change a life!
+        </p>
+
+    </section>
+
+
+    <!-- Animal Categories -->
+    <section class="categories">
+
+        <h2>Explore Our Categories</h2>
+
+        <div class="category-container">
+
+            <!-- Dogs -->
+            <a href="pets.html?category=dogs"
+               class="category-card">
+
+                <img src="images/dog.jpg" alt="Dog">
+
+                <h3>Dogs 🐶</h3>
+
+            </a>
+
+
+            <!-- Cats -->
+            <a href="pets.html?category=cats"
+               class="category-card">
+
+                <img src="images/cat.jpg" alt="Cat">
+
+                <h3>Cats 🐱</h3>
+
+            </a>
+
+
+            <!-- Tortoises -->
+            <a href="pets.html?category=tortoises"
+               class="category-card">
+
+                <img src="images/tortoise.jpg" alt="Tortoise">
+
+                <h3>Tortoises 🐢</h3>
+
+            </a>
+
+
+            <!-- Rabbits -->
+            <a href="pets.html?category=rabbits"
+               class="category-card">
+
+                <img src="images/rabbit.jpg" alt="Rabbit">
+
+                <h3>Rabbits 🐰</h3>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 Happy Pet Adoption | Made with ❤️</p>
+
+    </footer>
 
 </body>
+
 </html>
