@@ -1,236 +1,157 @@
 
-// PET INFORMATION
-
-const pets = {
-
-    dogs: [
-        {
-            name: "Buddy",
-            breed: "Golden Retriever",
-            age: "3 months",
-            personality: "Friendly and playful",
-            image: "images/dog.jpg"
-        },
-
-        {
-            name: "Charlie",
-            breed: "Beagle",
-            age: "5 months",
-            personality: "Active and loving",
-            image: "images/dog.jpg"
-        },
-
-        {
-            name: "Max",
-            breed: "Mixed Breed",
-            age: "4 months",
-            personality: "Gentle and cheerful",
-            image: "images/dog.jpg"
-        }
-    ],
-
-    cats: [
-        {
-            name: "Meovv",
-            breed: "Persian",
-            age: "2 months",
-            personality: "Cute and calm",
-            image: "images/cat.jpg"
-        },
-
-        {
-            name: "Luna",
-            breed: "Siamese",
-            age: "4 months",
-            personality: "Playful and curious",
-            image: "images/cat.jpg"
-        },
-
-        {
-            name: "Milo",
-            breed: "Domestic Cat",
-            age: "3 months",
-            personality: "Friendly and sweet",
-            image: "images/cat.jpg"
-        }
-    ],
-
-    tortoises: [
-        {
-            name: "Shelly",
-            breed: "Greek Tortoise",
-            age: "1 year",
-            personality: "Quiet and gentle",
-            image: "images/tortoise.jpg"
-        },
-
-        {
-            name: "Rocky",
-            breed: "Russian Tortoise",
-            age: "2 years",
-            personality: "Calm and curious",
-            image: "images/tortoise.jpg"
-        }
-    ],
-
-    rabbits: [
-        {
-            name: "Pinky",
-            breed: "Holland Lop",
-            age: "3 months",
-            personality: "Fast and playful",
-            image: "images/rabbit.jpg"
-        },
-
-        {
-            name: "Snowball",
-            breed: "Angora",
-            age: "4 months",
-            personality: "Soft and friendly",
-            image: "images/rabbit.jpg"
-        }
-    ]
-
+// Pet Database using your exact directory filenames
+const petsData = {
+    bella: {
+        name: "Bella",
+        breed: "Fluffy Puppy",
+        age: "3 Months",
+        gender: "Female",
+        size: "Small",
+        vaccinated: "Yes",
+        image: "images/an-adorable-fluffy-puppy-with-a-pink-flo.jpg",
+        bio: "Bella is a sweet fluffy puppy who loves belly rubs, treats, and following you around!"
+    },
+    milo: {
+        name: "Milo",
+        breed: "Gray & White Kitten",
+        age: "4 Months",
+        gender: "Male",
+        size: "Small",
+        vaccinated: "Yes",
+        image: "images/cute-curious-gray-and-white-kitten-in-a-lo.jpg",
+        bio: "Milo is a curious kitten who loves climbing, playing with yarn, and exploring around!"
+    },
+    oliver: {
+        name: "Oliver",
+        breed: "Tabby Cat",
+        age: "1 Year",
+        gender: "Male",
+        size: "Medium",
+        vaccinated: "Yes",
+        image: "images/cat_picture.jfif",
+        bio: "Oliver is a calm companion who loves relaxing in sunbeams and purring."
+    },
+    daisy: {
+        name: "Daisy",
+        breed: "Golden Retriever",
+        age: "2 Years",
+        gender: "Female",
+        size: "Large",
+        vaccinated: "Yes",
+        image: "images/fac5a7477927f58c6b03bef9968703fb.jpg",
+        bio: "Daisy is gentle, well-trained, and gets along great with children and other pets."
+    },
+    charlie: {
+        name: "Charlie",
+        breed: "Mixed Breed Dog",
+        age: "1.5 Years",
+        gender: "Male",
+        size: "Medium",
+        vaccinated: "Yes",
+        image: "images/ff849d79a2317d32f1c9134472ecf765.jpg",
+        bio: "Charlie is an energetic, loving dog ready for outdoor adventures and long walks."
+    },
+    luna: {
+        name: "Luna",
+        breed: "Domestic Short Hair",
+        age: "6 Months",
+        gender: "Female",
+        size: "Small",
+        vaccinated: "Yes",
+        image: "images/images.jpg",
+        bio: "Luna is an affectionate kitten who loves cuddling up on the couch."
+    }
 };
 
-
-// GET SELECTED CATEGORY FROM URL
-
-const parameters = new URLSearchParams(
-    window.location.search
-);
-
-const category = parameters.get("category") || "all";
-
-
-// DISPLAY PETS
-
-const container = document.getElementById("pet-container");
-
-if (container) {
-
-    const title = document.getElementById("category-title");
-
-    const categoryNames = {
-        dogs: "Dogs 🐶",
-        cats: "Cats 🐱",
-        tortoises: "Tortoises 🐢",
-        rabbits: "Rabbits 🐰",
-        all: "All Available Pets 🐾"
-    };
-
-    const selectedPets = category === "all"
-        ? Object.values(pets).flat()
-        : pets[category];
-
-    if (!selectedPets) {
-
-        title.textContent = "Category Not Found";
-
-        container.innerHTML =
-            "<p>Please return to the homepage and select a valid category.</p>";
-
-    } else {
-
-        title.textContent = "Available " + categoryNames[category];
-
-        selectedPets.forEach(function(pet) {
-
-            const card = document.createElement("div");
-
-            card.className = "pet-card";
-
-            card.innerHTML = `
-                <img src="${pet.image}" alt="${pet.name}">
-
-                <h3>${pet.name}</h3>
-
-                <p>
-                    <strong>Breed:</strong> ${pet.breed}<br>
-                    <strong>Age:</strong> ${pet.age}<br>
-                    <strong>Personality:</strong> ${pet.personality}
-                </p>
-
-                <p style="color:green;">
-                    <strong>Available</strong>
-                </p>
-
-                <button class="adopt-btn">
-                    Adopt Me ❤️
-                </button>
-            `;
-
-            const button = card.querySelector("button");
-
-            button.addEventListener("click", function() {
-                openForm(pet.name);
-            });
-
-            container.appendChild(card);
-
-        });
-
+document.addEventListener("DOMContentLoaded", () => {
+    // Check if on detail page
+    const petNameHeader = document.getElementById("detailPetName");
+    if (petNameHeader) {
+        loadPetDetails();
     }
 
-}
+    // Modal elements
+    const modal = document.getElementById("adoptionModal");
+    const closeModal = document.querySelector(".close-btn");
+    const openBtn = document.getElementById("openAdoptModalBtn");
+    const adoptForm = document.getElementById("adoptForm");
+    const adoptButtons = document.querySelectorAll(".pet-card .adopt-btn");
 
-
-// OPEN ADOPTION FORM
-
-function openForm(petName) {
-
-    document.getElementById("adoption-form").style.display = "flex";
-
-    document.getElementById("selected-pet").textContent =
-        "You are applying to adopt " + petName + "!";
-
-}
-
-
-// CLOSE ADOPTION FORM
-
-function closeForm() {
-
-    document.getElementById("adoption-form").style.display = "none";
-
-}
-
-
-// SUBMIT ADOPTION FORM
-
-const adoptForm = document.getElementById("adoptForm");
-
-if (adoptForm) {
-
-    adoptForm.addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        alert("Thank you for applying! We appreciate your interest in adopting a pet ❤️");
-
-        adoptForm.reset();
-
-        closeForm();
-
+    // Open homepage card modals
+    adoptButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const petName = e.target.parentElement.querySelector("h3").innerText;
+            const modalTitle = document.getElementById("modalTitle");
+            if (modalTitle) modalTitle.innerText = `Adopt ${petName}`;
+            if (modal) modal.style.display = "flex";
+        });
     });
 
-}
+    if (openBtn) {
+        openBtn.addEventListener("click", () => {
+            if (modal) modal.style.display = "flex";
+        });
+    }
 
+    if (closeModal) {
+        closeModal.addEventListener("click", () => {
+            if (modal) modal.style.display = "none";
+        });
+    }
 
-// SUBMIT CONTACT FORM
-
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        alert("Thank you for contacting Happy Pet Adoption! ❤️");
-
-        contactForm.reset();
-
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
     });
 
+    if (adoptForm) {
+        adoptForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Application submitted! Our team will contact you shortly.");
+            modal.style.display = "none";
+            adoptForm.reset();
+        });
+    }
+});
+
+// Load details dynamically from URL query parameter (e.g. pet-detail.html?pet=bella)
+function loadPetDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const petKey = urlParams.get("pet") || "bella";
+    const pet = petsData[petKey] || petsData["bella"];
+
+    document.getElementById("detailPetName").innerText = pet.name;
+    document.getElementById("detailPetBreed").innerText = `${pet.breed} • ${pet.age}`;
+    document.getElementById("detailPetImage").src = pet.image;
+    document.getElementById("detailGender").innerText = pet.gender;
+    document.getElementById("detailAge").innerText = pet.age;
+    document.getElementById("detailSize").innerText = pet.size;
+    document.getElementById("detailVaccinated").innerText = pet.vaccinated;
+    document.getElementById("detailBio").innerText = pet.bio;
+}
+
+// Category filter on main page
+function filterCategory(category) {
+    const petCards = document.querySelectorAll(".pet-card");
+    petCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+// Action option handlers
+function scheduleVisit() {
+    alert("Opening visit scheduler calendar...");
+}
+
+function fosterPet() {
+    alert("Thank you for your interest in fostering! A coordinator will get in touch.");
+}
+
+function sponsorPet() {
+    alert("Redirecting to shelter donation page...");
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Details - Adopt a Friend</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero-section nav-hero">
+        <a href="index.html" class="back-link">← Back to All Pets</a>
+        <h1>Meet Your Potential Best Friend</h1>
+    </header>
+
+    <main class="detail-container">
+        <!-- Left Image -->
+        <div class="pet-image-card">
+            <img id="detailPetImage" src="images/an-adorable-fluffy-puppy-with-a-pink-flo.jpg" alt="Pet Profile Picture">
+            <span class="badge" id="detailStatus">Available for Adoption</span>
+        </div>
+
+        <!-- Right Details & Buttons -->
+        <div class="pet-details-content">
+            <h1 id="detailPetName">Bella</h1>
+            <p class="pet-subtitle" id="detailPetBreed">Fluffy Puppy • 3 Months Old</p>
+            
+            <div class="quick-stats">
+                <div class="stat-box">
+                    <span class="stat-label">Gender</span>
+                    <span class="stat-value" id="detailGender">Female</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Age</span>
+                    <span class="stat-value" id="detailAge">3 Months</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Size</span>
+                    <span class="stat-value" id="detailSize">Small</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Vaccinated</span>
+                    <span class="stat-value" id="detailVaccinated">Yes</span>
+                </div>
+            </div>
+
+            <div class="pet-bio">
+                <h3>About Me</h3>
+                <p id="detailBio">
+                    Bella is a playful and friendly puppy looking for a loving family. She loves running around in the yard, playing fetch, and cuddling on warm afternoons!
+                </p>
+            </div>
+
+            <!-- Options/Actions -->
+            <div class="pet-actions">
+                <h3>Take Action</h3>
+                <div class="action-buttons">
+                    <button class="action-btn primary" id="openAdoptModalBtn">🐾 Apply to Adopt</button>
+                    <button class="action-btn secondary" onclick="scheduleVisit()">📅 Schedule a Visit</button>
+                    <button class="action-btn outline" onclick="fosterPet()">🏠 Foster Me</button>
+                    <button class="action-btn outline" onclick="sponsorPet()">💖 Sponsor / Donate</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Popup -->
+    <div id="adoptionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modalTitle">Adopt Bella</h3>
+            <p>Fill out this form and our shelter team will get in touch!</p>
+            <form id="adoptForm">
+                <input type="text" placeholder="Your Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Tell us a bit about your home & pet experience..." rows="3" required></textarea>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Pet Adoption Center. All rights reserved.</p>
+    </footer>
+
+    <script src="new.js"></script>
+</body>
+</html>
