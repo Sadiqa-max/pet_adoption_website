@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption Application - Pet Adoption Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero-section nav-hero">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <h1>Pet Adoption </h1>
+        <p>Take the first step toward welcoming your new family member home!</p>
+    </header>
+
+    <main class="form-container">
+        <!-- Selected Pet Summary Card -->
+        <div class="selected-pet-summary">
+            <div class="summary-image-wrapper">
+                <img id="summaryPetImage" src="images/an-adorable-fluffy-puppy-with-a-pink-flo.jpg" alt="Selected Pet">
+            </div>
+            <div class="summary-details">
+                <span class="badge">Application For</span>
+                <h2 id="summaryPetName">Bella</h2>
+                <p id="summaryPetBreed">Fluffy Puppy • 3 Months</p>
+            </div>
+        </div>
+
+        <!-- Comprehensive Application Form -->
+        <form id="fullAdoptionForm" class="adoption-application-form">
+            
+            <!-- Section 1: Applicant Information -->
+            <div class="form-section">
+                <h3>1. Personal Details</h3>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="jane@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="(555) 000-0000" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="address">Home Address</label>
+                        <input type="text" id="address" placeholder="123 Main St, City, State" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Home Environment -->
+            <div class="form-section">
+                <h3>2. Home & Living Situation</h3>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="housingType">Housing Type</label>
+                        <select id="housingType" required>
+                            <option value="">Select Housing Type</option>
+                            <option value="house">Single Family House</option>
+                            <option value="apartment">Apartment / Condo</option>
+                            <option value="townhouse">Townhouse</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="ownRent">Do you Own or Rent?</label>
+                        <select id="ownRent" required>
+                            <option value="">Select Option</option>
+                            <option value="own">Own</option>
+                            <option value="rent">Rent (Landlord Approval Required)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="yard">Fenced Yard?</label>
+                        <select id="yard" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="otherPets">Current Pets at Home</label>
+                        <input type="text" id="otherPets" placeholder="e.g., 1 Cat, 0 Dogs">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Visit Scheduling -->
+            <div class="form-section">
+                <h3>3. Schedule Shelter Visit</h3>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="visitDate">Preferred Visit Date</label>
+                        <input type="date" id="visitDate" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="visitTime">Preferred Time Slot</label>
+                        <select id="visitTime" required>
+                            <option value="">Select Time</option>
+                            <option value="morning">Morning (10:00 AM - 12:00 PM)</option>
+                            <option value="afternoon">Afternoon (1:00 PM - 4:00 PM)</option>
+                            <option value="evening">Late Afternoon (4:00 PM - 6:00 PM)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group full-width">
+                    <label for="notes">Additional Comments or Questions</label>
+                    <textarea id="notes" rows="4" placeholder="Tell us about your experience with pets or any special requests..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn main-submit">Submit Full Application</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; Pet Adoption Center. All rights reserved.</p>
+    </footer>
+
+    <script src="new.js"></script>
+</body>
+</html>
+
+// Inside new.js (Page 3 submit handler)
+fullAppForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const applicantName = document.getElementById("fullName").value;
+    alert(`Thank you, ${applicantName}! Your adoption application has been submitted successfully.`);
+    // Returns user to homepage after submission
+    window.location.href = "index.html"; 
+});
